@@ -1,6 +1,7 @@
 import express from 'express';
 import Database from './Database.mjs'
 import RequestRepository from './RequestRepo.mjs'
+import cors from 'cors';
 
 const app = express();
 const port = process.env.PORT || 3034;
@@ -15,6 +16,11 @@ db.initialize();
 
 // Middleware to parse JSON requests
 app.use(express.json());
+
+app.use(cors({
+  origin: 'https://requestie.netlify.app',
+  credentials: true, // if you're using cookies/auth
+}));
 
 const verifySessionID = async (sessionID, expectedRole) => {
   if (sessionID != '') {

@@ -18,7 +18,7 @@ db.initialize();
 app.use(express.json());
 
 app.use(cors({
-  origin: 'https://requestie.netlify.app',
+  origin: 'https://dmitrym-requestie.vercel.app',
   credentials: true, // if you're using cookies/auth
 }));
 
